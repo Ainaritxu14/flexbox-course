@@ -1,0 +1,550 @@
+
+CHECKPOINT 8
+1.¿Qué tipo de bucles hay en JS?
+Ahora, existen diferentes tipos de bucles en JavaScript: for, do while, while, for in, for of. Esta estructura de programación existe en la mayoría de lenguajes de programación. Los bucles ofrecen una forma rápida y sencilla de hacer algo repetidamente.
+Declaración for
+Un ciclo for se repite hasta que una condición especificada se evalúe como false. El bucle for de JavaScript es similar al bucle for de Java y C.
+Una declaración for tiene el siguiente aspecto:
+for ([expresiónInicial]; [expresiónCondicional]; [expresiónDeActualización])
+  instrucción
+Cuando se ejecuta un bucle for, ocurre lo siguiente:
+1.	Se ejecuta la expresión de iniciación expresiónInicial, si existe. Esta expresión normalmente inicia uno o más contadores de bucle, pero la sintaxis permite una expresión de cualquier grado de complejidad. Esta expresión también puede declarar variables.
+
+2.	Se evalúa la expresión expresiónCondicional. Si el valor de expresiónCondicional es verdadero, se ejecutan las instrucciones del bucle. Si el valor de condición es falso, el bucle for termina. (Si la expresión condición se omite por completo, se supone que la condición es verdadera).
+
+3.	Se ejecuta la instrucción. Para ejecutar varias instrucciones, usa una declaración de bloque ({ ... }) para agrupar esas declaraciones.
+
+4.	Si está presente, se ejecuta la expresión de actualización expresiónDeActualización.
+
+5.	El control regresa al paso 2.
+Declaración do...while
+La instrucción do...while se repite hasta que una condición especificada se evalúe como falsa.
+Una declaración do...while tiene el siguiente aspecto:
+do
+  expresión
+while (condición);
+exposición siempre se ejecuta una vez antes de que se verifique la condición. (Para ejecutar varias instrucciones, usa una declaración de bloque ({ ... }) para agrupar esas declaraciones).
+Si condición es true, la declaración se ejecuta de nuevo. Al final de cada ejecución, se comprueba la condición. Cuando la condición es false, la ejecución se detiene y el control pasa a la declaración que sigue a do...while.
+Ejemplo
+En el siguiente ejemplo, el bucle do itera al menos una vez y se repite hasta que i ya no sea menor que 5.
+let i = 0; do { i += 1; console.log(i); } while (i < 5);
+Declaración while
+Una declaración while ejecuta sus instrucciones siempre que una condición especificada se evalúe como true. Una instrucción while tiene el siguiente aspecto:
+while (condición)
+  expresión
+Si la condición se vuelve false, la instrucción dentro del bucle se deja de ejecutar y el control pasa a la instrucción que sigue al bucle.
+La prueba de condición ocurre antes de que se ejecute la expresión en el bucle. Si la condición devuelve true, se ejecuta la expresión y la condición se prueba de nuevo. Si la condición devuelve false, la ejecución se detiene y el control se pasa a la instrucción que sigue a while.
+Para ejecutar varias instrucciones, usa una declaración de bloque ({ ... }) para agrupar esas declaraciones.
+Ejemplo 1
+El siguiente ciclo del while se repite siempre que n sea menor que 3:
+JSCopy to Clipboard
+let n = 0;
+let x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+}
+Con cada iteración, el bucle incrementa n y agrega ese valor a x. Por lo tanto, x y n toman los siguientes valores:
+•	Después de la primera pasada: n = 1 y x = 1
+•	Después de la segunda pasada: n = 2 y x = 3
+•	Después de la tercera pasada: n = 3 y x = 6
+Después de completar la tercera pasada, la condición n < 3 ya no es true, por lo que el bucle termina.Ejemplo 2
+Evita los bucles infinitos. Asegúrate de que la condición en un bucle eventualmente se convierta en false; de lo contrario, el bucle nunca terminará. Las declaraciones en el siguiente bucle while se ejecutan indefinidamente porque la condición nunca se vuelve false:
+JSCopy to Clipboard
+// ¡Los bucles infinitos son malos!
+while (true) {
+  console.log("¡Hola, mundo!");
+}
+}
+Declaración break
+Usa la instrucción break para terminar un bucle, switch o junto con una declaración etiquetada.
+•	Cuando usas break sin una etiqueta, inmediatamente termina el while, do-while, for o switch y transfiere el control a la siguiente declaración.
+•	Cuando usas break con una etiqueta, termina la declaración etiquetada especificada.
+La sintaxis de la instrucción break se ve así:
+break;
+break [label];
+1.	La primera forma de la sintaxis termina el bucle envolvente más interno o el switch.
+2.	La segunda forma de la sintaxis termina la instrucción etiquetada específica.
+Ejemplo 1
+El siguiente ejemplo recorre en iteración los elementos de un arreglo hasta que encuentra el índice de un elemento cuyo valor es theValue:
+JSCopy to Clipboard
+for (let i = 0; i < a.length; i++) {
+  if (a[i] === theValue) {
+    break;
+  }
+}
+Declaración for...in
+La instrucción for...in itera una variable especificada sobre todas las propiedades enumerables de un objeto. Para cada propiedad distinta, JavaScript ejecuta las instrucciones especificadas. Una declaración for...in tiene el siguiente aspecto:
+for (variable in objeto)
+  instrucción
+
+
+MÁS info y ejemplos :
+https://es.javascript.info/while-for
+
+
+2.¿Cuáles son las diferencias entre const, let y var?
+Estas son las diferencias de Let, Var y Const. const : Nos permite declarar variables inmutables, osea no se puede cambiar. var y let : Nos permiten crear variables mutables que si se puede cambiar. var : Nos permite definir variables al alcanse de su función mas sercana, osea dentro de la función.
+
+Ámbito de var:
+El ámbito, significa esencialmente dónde están disponibles estas variables para su uso. Las declaraciones var tienen un ámbito global o un ámbito de función/local.
+
+El ámbito es global cuando una variable var se declara fuera de una función. Esto significa que cualquier variable que se declare con var fuera de una función está disponible para su uso en toda la pantalla.
+var tiene un ámbito local cuando se declara dentro de una función. Esto significa que está disponible y solo se puede acceder a ella dentro de esa función.
+
+Para entenderlo mejor, mira el siguiente ejemplo.
+    var saludar = "hey, hola";
+    
+    function nuevaFuncion() {
+        var hola = "hola";
+    }
+
+Las variables con var se pueden volver a declarar y modificar
+Esto significa que podemos hacer esto dentro del mismo ámbito y no obtendremos un error.
+    var saludar = "hey, hola";
+    var saludar = "dice Hola tambien";
+
+Let:
+
+let es ahora preferible para la declaración de variables. No es una sorpresa, ya que es una mejora de las declaraciones con var. También resuelve el problema con var que acabamos de cubrir. Consideremos por qué esto es así.
+let tiene un ámbito de bloque
+Un bloque es un trozo de código delimitado por {}. Un bloque vive entre llaves. Todo lo que está dentro de llaves es un bloque.
+Así que una variable declarada en un bloque con let  solo está disponible para su uso dentro de ese bloque. Permíteme explicar esto con un ejemplo:
+
+   let saludar = "dice Hola";
+   let tiempos = 4;
+
+   if (tiempos > 3) {
+        let hola = "dice Hola tambien";
+        console.log(hola);// "dice Hola tambien"
+    }
+   console.log(hola) // hola is not defined
+
+let puede modificarse pero no volver a declararse.
+Al igual que var,  una variable declarada con let puede ser actualizada dentro de su ámbito. A diferencia de var, una variable let no puede ser re-declarada dentro de su ámbito. Así que mientras esto funciona:
+
+
+    let saludar = "dice Hola";
+    saludar = "dice Hola tambien";
+esto devolverá un error:
+    let saludar = "dice Hola";
+    let saludar = "dice Hola tambien"; // error: Identifier 'saludar' has already been declared
+
+Const:
+
+Las variables declaradas con const mantienen valores constantes. Las declaraciones const similitudes con las declaraciones let.
+Las declaraciones const tienen un ámbito de bloque
+Al igual que las declaraciones let, solamente se puede acceder a las declaraciones const dentro del bloque en el que fueron declaradas.
+const no puede modificarse ni volver a declararse
+Esto significa que el valor de una variable declarada con const s el mismo dentro de su ámbito. No se puede actualizar ni volver a declarar. Así que si declaramos una variable con const, no podemos hacer esto:
+
+    const saludar = "dice Hola";
+    saludar = "dice Hola tambien";// error: Assignment to constant variable. 
+
+
+3.¿Qué es una función de flecha?
+Las funciones flecha permiten definir de manera compacta una función convencional. Si la función tiene solamente una sentencia que devuelve un valor, el uso de funciones flecha nos permite eliminar las llaves y la palabra return. Incluso utilizando parámetros también podemos ver mucho más reducido el código.
+Hay otra sintaxis muy simple y concisa para crear funciones, que a menudo es mejor que las Expresiones de funciones.
+Se llama “funciones de flecha”, porque se ve así:
+let func = (arg1, arg2, ..., argN) => expression;
+
+Esto crea una función func que acepta los parámetros arg1..argN, luego evalúa la expression del lado derecho mediante su uso y devuelve su resultado.
+En otras palabras, es la versión más corta de:
+let func = function(arg1, arg2, ..., argN) {
+  return expression;
+};
+
+Veamos un ejemplo concreto:
+let sum = (a, b) => a + b;
+
+/* Esta función de flecha es una forma más corta de:
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+alert( sum(1, 2) ); // 3
+
+Como puedes ver, (a, b) => a + b significa una función que acepta dos argumentos llamados a y b. Tras la ejecución, evalúa la expresión a + b y devuelve el resultado.
+•	Si solo tenemos un argumento, se pueden omitir paréntesis alrededor de los parámetros, lo que lo hace aún más corto.
+Por ejemplo:
+let double = n => n * 2;
+// Más o menos lo mismo que: let double = function(n) { return n * 2 }
+
+alert( double(3) ); // 6
+
+•	Si no hay parámetros, los paréntesis estarán vacíos; pero deben estar presentes:
+•	let sayHi = () => alert("¡Hola!");
+•	
+sayHi();
+Las funciones de flecha se pueden usar de la misma manera que las expresiones de función.
+Por ejemplo, para crear dinámicamente una función:
+let age = prompt("What is your age?", 18);
+let welcome = (age < 18) ?
+  () => alert('¡Hola!') :
+  () => alert("¡Saludos!");
+
+welcome();
+
+Las funciones de flecha pueden parecer desconocidas y poco legibles al principio, pero eso cambia rápidamente a medida que los ojos se acostumbran a la estructura.
+Son muy convenientes para acciones simples de una línea, cuando somos demasiado flojos para escribir muchas palabras.
+Funciones de flecha multilínea
+Las funciones de flecha que estuvimos viendo eran muy simples. Toman los parámetros a la izquierda de =>, los evalúan y devuelven la expresión del lado derecho.
+A veces necesitamos una función más compleja, con múltiples expresiones o sentencias. En ese caso debemos encerrarlos entre llaves. La diferencia principal es que las llaves necesitan usar un return para devolver un valor (tal como lo hacen las funciones comunes).
+Como esto:
+let sum = (a, b) => {  // la llave abre una función multilínea
+  let result = a + b;
+  return result; // si usamos llaves, entonces necesitamos un "return" explícito
+};
+
+alert( sum(1, 2) ); // 3
+
+Resumen
+Las funciones de flecha son útiles para acciones simples, especialmente las de una sola línea. Vienen en dos variantes:
+1.	Sin llaves: (...args) => expression – el lado derecho es una expresión: la función la evalúa y devuelve el resultado. Pueden omitirse los paréntesis si solo hay un argumento, por ejemplo n => n*2.
+2.	Con llaves: (...args) => { body } – las llaves nos permiten escribir varias declaraciones dentro de la función, pero necesitamos un return explícito para devolver algo.
+
+Más info y ejemplos en : https://didacticode.com/curso/curso-javascript-es6/leccion/javascript-es6-06-arrow-functions-funciones-flecha-2/  
+
+4.¿Qué es la deconstrucción de variables?
+Es una expresión de JavaScript que permite desempacar valores de arreglos o propiedades de objetos en distintas variables. Es decir, podemos extraer datos de arreglos y objectos y asignarlos a variables.
+¿Por qué es esto necesario?
+Imagina que queremos extraer datos de un arreglo. Anteriormente, ¿cómo se haría esto?
+let introduccion = ["Hola", "Yo" , "soy", "Sarah"];
+let saludo = introduccion[0];
+let nombre = introduccion[3];
+
+console.log(saludo); // "Hola"
+console.log(nombre); // "Sarah"
+
+Podemos ver que cuando queremos extraer datos de un arreglo, tenemos que hacer lo mismo una y otra vez.
+La desestructuración de ES6 facilita la extracción de estos datos. ¿De qué forma? Primero, discutiremos sobre la desestructuración con arreglos. Luego pasaremos a la desestructuración de objetos.
+Empecemos.
+Desestructuración Básica de Arreglos
+Si queremos extraer datos de un arreglo, es bastante sencillo usando la sintaxis de desestructuración.
+Tomando como referencia el primer ejemplo. En lugar de pasar por ese proceso repetitivo, haríamos esto:
+let introduccion = ["Hola", "Yo" , "soy", "Sarah"];;
+let [saludo, pronombre] = introduccion;
+
+console.log(saludo); // "Hola"
+console.log(pronombre); // "Yo"
+
+También podemos lo siguiente, y conseguir el mismo resultado:
+let [saludo, pronombre] = ["Hola", "Yo" , "soy", "Sarah"];
+
+console.log(saludo); // "Hola"
+console.log(pronombre); // "Yo"
+
+Declarando Variables antes de la Asignación
+Las variables se pueden declarar antes de ser asignadas de esta manera:
+let saludo, pronombre;
+[saludo, pronombre] = ["Hola", "Yo" , "soy", "Sarah"];
+
+console.log(saludo); // "Hola"
+console.log(pronombre); // "Yo"
+
+Observa que las variables se establecen de izquierda a derecha. Así que la primera variable obtiene el primer elemento del arreglo, la segunda variable obtiene el segundo elemento, y así sucesivamente.
+Omitiendo elementos en un Arreglo
+¿Qué pasa si queremos obtener el primer y último elemento de nuestro arreglo en lugar del primero y el segundo, y queremos asignar solo dos variables? Esto también se puede hacer. Fíjate en el siguiente ejemplo:
+let [saludo,,,nombre] = ["Hola", "Yo" , "soy", "Sarah"];
+
+console.log(saludo); // "Hola"
+console.log(nombre); // "Sarah"
+
+¿Qué acaba de suceder?
+Pon atención al lado izquierdo de la asignación de variables del arreglo. Observa que en lugar de tener solo una coma, tenemos tres. El separador de coma se utiliza para omitir valores en un arreglo. Por lo que, si deseas omitir un elemento en un arreglo, usa comas.
+Veamos otro ejemplo. Si queremos saltar el primer y tercer elemento de la lista. ¿Cómo lo haríamos?
+let [,pronombre,,nombre] = ["Hola", "Yo" , "soy", "Sarah"];
+
+console.log(pronombre); // "Yo"
+console.log(nombre); // "Sarah"
+
+Como ves, el separador de comas es el que hace la magia. Entonces, si queremos omitir todos los elementos, simplemente hacemos esto:
+let [,,,,] = ["Hola", "Yo" , "soy", "Sarah"];
+
+Asignando el resto de un arreglo
+
+¿Qué sucede si queremos asignar parte del arreglo a variables y el resto de elementos de dicho arreglo a otra variable en particular? En ese caso, haríamos esto:
+let [saludo, ...introduccion] = ["Hola", "Yo" , "soy", "Sarah"];
+
+console.log(saludo); // "Hola"
+console.log(introduccion); // ["Yo", "soy", "Sarah"]
+
+Utilizando este patrón, puedes desempacar y asignar la parte restante de un arreglo a una variable.
+Desestructuración con Funciones
+También podemos extraer datos de un arreglo devuelto por una función. Digamos que tenemos una función que devuelve un arreglo como el del siguiente ejemplo:
+function obtenerArreglo() {
+    return ["Hola", "Yo" , "soy", "Sarah"];
+} 
+
+let [saludo, pronombre] = obtenerArreglo();
+
+console.log(saludo); // "Hello"
+console.log(pronombre); // "I"
+Como puedes observar, obtenemos los mismos resultados.
+Más info y ejemplos:
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+5.¿Qué hace el operador de extensión en JS?
+El operador spread en JavaScript es una sintaxis introducida en ECMAScript 6 (ES6) que te permite propagar los elementos de un iterable (como arrays, cadenas u objetos), en otro iterable o llamada a función.
+Se denota con tres puntos «...» seguidos de una expresión o un iterable. El operador spread es una potente herramienta que proporciona una forma concisa y flexible de trabajar con datos en JavaScript.
+Puede utilizarse para concatenar arrays, crear copias superficiales de arrays, convertir cadenas en arrays de caracteres, fusionar o clonar objetos y pasar dinámicamente valores a funciones o constructores, entre otros casos de uso.
+El operador spread simplifica las operaciones complejas y permite un código más expresivo y eficiente. Esto lo convierte en una función muy popular entre los desarrolladores de JavaScript.
+Sintaxis y Uso del Operador Spread de JavaScript
+Veamos algunos ejemplos de uso del operador spread con arrays, cadenas y objetos para ilustrar su sintaxis y uso.
+1. Concatenar Arrays
+Puedes utilizar el operador spread para distribuir los elementos de un array en otro array. Esto es especialmente útil para concatenar arrays o crear una copia superficial de una array.
+Ejemplo:
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Concatenate arrays using spread operator
+const concatenatedArr = [...arr1, ...arr2];
+console.log(concatenatedArr); // Output: [1, 2, 3, 4, 5, 6]
+2. Extendiendo Cadenas de Texto
+Puedes utilizar el operador spread para desglosar los caracteres de una cadena en un array. Esto es útil para convertir una cadena en un array de caracteres, que puede manipularse o combinarse con otros arrays utilizando métodos de array.
+Ejemplo:
+const str = "Hello";
+
+// Spread characters of a string into an array
+const charArray = [...str];
+console.log(charArray); // Output: ['H', 'e', 'l', 'l', 'o']
+3. Fusionar y Clonar Objetos
+Puedes utilizar el operador spread para propagar las propiedades de un objeto en otro objeto. Esto es útil para fusionar o clonar objetos, crear un nuevo objeto con algunas propiedades anuladas o extraer propiedades específicas de un objeto.
+Ejemplo:
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+
+// Merge objects using spread operator
+const mergedObj = { ...obj1, ...obj2 };
+console.log(mergedObj); // Output: { a: 1, b: 3, c: 4 }
+
+// Clone an object using spread operator
+const clonedObj = { ...obj1 };
+console.log(clonedObj); // Output: { a: 1, b: 2 }
+4. Extender Argumentos de Función
+El operador spread también puede ser usado en otros contextos, como los argumentos de una función, para pasar valores de manera dinámica a una función o constructor.
+Ejemplo:
+// Pass array elements as arguments to a function using the spread operator
+const numbers = [1, 2, 3];
+
+const sum = (a, b, c) => a + b + c;
+
+console.log(sum(...numbers)); // Output: 6
+5. Combinación del Operador Spread con el Parámetro rest
+El operador spread puede utilizarse junto con otras funciones modernas de JavaScript, como la desestructuración de arrays y objetos, para habilitar potentes técnicas de programación funcional. Te permite extraer y manipular elementos de arrays o propiedades de objetos con una sintaxis concisa y expresiva.
+Ejemplo:
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = numbers;
+
+console.log(first); // Output: 1
+console.log(second); // Output: 2
+console.log(rest); // Output: [3, 4, 5]
+Los ejemplos anteriores muestran la versatilidad y flexibilidad del operador spread en JavaScript, convirtiéndolo en una herramienta poderosa para manipular y combinar datos de manera concisa y eficiente.
+Comprender el Operador Spread y las Copias Superficiales
+Es importante tener en cuenta que el operador spread crea copias superficiales de matrices y objetos, y puede tener implicaciones de rendimiento cuando se utiliza con arrays u objetos grandes.
+const originalArray = [[1, 2, 3, 4], 12];
+const copiedArray = [...originalArray];
+
+copiedArray[0].push(99);
+
+console.log(originalArray); // Output: [[1, 2, 3, 4, 99], 12]
+console.log(copiedArray); // Output: [[1, 2, 3, 4, 99], 12]
+Más información y ejemplos:
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Classes/extends
+
+6.¿Qué es la programación orientada a objetos?
+En el mundo de la programación, la POO es un paradigma que ha ganado una gran popularidad en los últimos años debido a su capacidad para crear aplicaciones más robustas, flexibles y fáciles de mantener. Esta metodología de desarrollo se basa en la idea de que los programas se pueden organizar como una colección de objetos interconectados, cada uno con su propio conjunto de datos y funcionalidades.
+
+La Programación Orientada a Objetos (POO) es un paradigma de programación, es decir, un modelo o un estilo de programación que nos da unas guías sobre cómo trabajar con él. Se basa en el concepto de clases y objetos. Este tipo de programación se utiliza para estructurar un programa de software en piezas simples y reutilizables de planos de código (clases) para crear instancias individuales de objetos. 
+A lo largo de la historia, han ido apareciendo diferentes paradigmas de programación. Lenguajes secuenciales como COBOL o procedimentales como Basic o C, se centraban más en la lógica que en los datos. Otros más modernos como Java, C# y Python, utilizan paradigmas para definir los programas, siendo la Programación Orientada a Objetos la más popular. 
+
+
+Con el paradigma de Programación Orientado a Objetos lo que buscamos es dejar de centrarnos en la lógica pura de los programas, para empezar a pensar en objetos, lo que constituye la base de este paradigma. Esto nos ayuda muchísimo en sistemas grandes, ya que en vez de pensar en funciones, pensamos en las relaciones o interacciones de los diferentes componentes del sistema.
+
+
+Un programador diseña un programa de software organizando piezas de información y comportamientos relacionados en una plantilla llamada clase. Luego, se crean objetos individuales a partir de la plantilla de clase. Todo el programa de software se ejecuta haciendo que varios objetos interactúen entre sí para crear un programa más grande.
+
+
+Ejemplo 1: Sistema de Gestión de Biblioteca
+Imaginemos un sistema de gestión de biblioteca. Podemos modelar diferentes entidades como clases y aprovechar la herencia y el polimorfismo.
+class MaterialBibliografico: 
+    def __init__(self, titulo, autor): 
+        self.titulo = titulo 
+        self.autor = autor 
+
+    def mostrar_info(self): 
+        print(f"{self.titulo} - {self.autor}") 
+
+class Libro(MaterialBibliografico): 
+    def __init__(self, titulo, autor, genero): 
+        super().__init__(titulo, autor) 
+        self.genero = genero 
+
+    def mostrar_info(self): 
+        super().mostrar_info() 
+        print(f"Género: {self.genero}") 
+
+class Revista(MaterialBibliografico): 
+    def __init__(self, titulo, autor, categoria): 
+        super().__init__(titulo, autor) 
+        self.categoria = categoria 
+
+    def mostrar_info(self): 
+        super().mostrar_info() 
+        print(f"Categoría: {self.categoria}") 
+
+# Uso de las clases 
+libro = Libro("El Señor de los Anillos", "J.R.R. Tolkien", "Fantasía") 
+revista = Revista("National Geographic", "Varios", "Ciencia") 
+
+libro.mostrar_info() 
+revista.mostrar_info()
+Este ejemplo utiliza la herencia para compartir atributos y métodos comunes entre MaterialBibliografico, Libro, y Revista.
+Ejemplo 2: Simulación de un Juego de Rol (RPG)
+Vamos a modelar personajes de un juego de rol. Cada personaje tiene atributos y habilidades únicas.
+class Personaje: 
+    def __init__(self, nombre, salud, ataque): 
+        self.nombre = nombre 
+        self.salud = salud 
+        self.ataque = ataque 
+
+    def atacar(self, objetivo): 
+        print(f"{self.nombre} ataca a {objetivo.nombre}!") 
+        objetivo.recibir_danio(self.ataque) 
+    
+    def recibir_danio(self, cantidad): 
+        print(f"{self.nombre} recibe {cantidad} de daño.") 
+        self.salud -= cantidad 
+        if self.salud <= 0: 
+            print(f"{self.nombre} ha sido derrotado.") 
+
+class Mago(Personaje): 
+    def __init__(self, nombre, salud, ataque, poder_magico): 
+    super().__init__(nombre, salud, ataque) 
+    self.poder_magico = poder_magico 
+
+    def lanzar_hechizo(self, objetivo): 
+    print(f"{self.nombre} lanza un hechizo a {objetivo.nombre}!") 
+    objetivo.recibir_danio(self.poder_magico) 
+
+# Uso de las clases 
+guerrero = Personaje("Guerrero", 100, 20) 
+mago = Mago("Merlín", 80, 15, 30) 
+
+guerrero.atacar(mago) 
+mago.lanzar_hechizo(guerrero)
+En este ejemplo, la clase Mago hereda de la clase Personaje, pero también tiene su propio método único, lanzar_hechizo.
+Beneficios de los Ejemplos Prácticos de POO
+1.	Reutilización de Código: La herencia permite compartir y reutilizar código entre clases relacionadas.
+2.	Organización Estructural: Las clases proporcionan una forma estructurada y organizada de modelar objetos del mundo real.
+3.	Flexibilidad y Escalabilidad: POO facilita la adaptación y expansión del código a medida que los requisitos del programa evolucionan.
+Conclusión
+Los ejemplos prácticos de POO demuestran cómo organizar y estructurar el código de manera efectiva. Al aplicar estos conceptos en situaciones del mundo real, te equipas con las habilidades necesarias para desarrollar programas más eficientes y mantenibles. 
+
+Más info: https://profile.es/blog/que-es-la-programacion-orientada-a-objetos/
+7.¿Qué es una promesa en JS?
+Esencialmente, una promesa es un objeto devuelto al cual se adjuntan funciones callback , en lugar de pasar callbacks a una función.
+Un Promise está en uno de estos estados:
+•	pending (pendiente): estado inicial, ni cumplido ni rechazado.
+•	fulfilled (cumplida): lo que significa que la operación se completó con éxito.
+•	rejected (rechazada): lo que significa que la operación falló.
+Una promesa pendiente puede cumplirse con un valor o rechazarse con un motivo (error). Cuando ocurre cualquiera de estas opciones, se llama a los controladores asociados en cola por el método then de una promesa. Si la promesa ya se ha cumplido o rechazado cuando se adjunta un manejador correspondiente, se llamará al manejador, por lo que no existe una condición de carrera entre la finalización de una operación asíncrona y la conexión de sus manejadores.
+Como los métodos Promise.prototype.then() y Promise.prototype.catch() devuelven promesas, se pueden encadenar.
+ 
+
+Una Promise (promesa en castellano) es un objeto que representa la terminación o el fracaso de una operación asíncrona. Dado que la mayoría de las personas consumen promises ya creadas.
+Esencialmente, una promesa es un objeto devuelto al cual se adjuntan funciones callback, en lugar de pasar callbacks a una función.
+Considera la función crearArchivoAudioAsync(), la cual genera de manera asíncrona un archivo de sonido de acuerdo a un archivo de configuración, y dos funciones callback, una que es llamada si el archivo de audio es creado satisfactoriamente, y la otra que es llamada si ocurre un error. El código podría verse de la siguiente forma:
+JSCopy to Clipboard
+function exitoCallback(resultado) {
+  console.log("Archivo de audio disponible en la URL " + resultado);
+}
+
+function falloCallback(error) {
+  console.log("Error generando archivo de audio " + error);
+}
+
+crearArchivoAudioAsync(audioConfig, exitoCallback, falloCallback);
+... las funciones modernas devuelven un objeto promise al que puedes adjuntar funciones de retorno (callbacks). Si crearArchivoAudioAsync fuera escrita de manera tal que devuelva un objeto promise, usarla sería tan simple como esto:
+JSCopy to Clipboard
+crearArchivoAudioAsync(audioConfig).then(exitoCallback, falloCallback);
+Lo cual es la versión corta de:
+JSCopy to Clipboard
+const promesa = crearArchivoAudioAsync(audioConfig);
+promesa.then(exitoCallback, falloCallback);
+
+Promesas encadenadas
+Los métodos Promise.prototype.then(), Promise.prototype.catch() y Promise.prototype.finally() se utilizan para asociar una acción posterior con una promesa que se establece.
+El método .then() toma hasta dos argumentos; el primer argumento es una función de devolución de llamada (callback) para el caso resuelto de la promesa, y el segundo argumento es una función de devolución de llamada para el caso rechazado. Cada .then() devuelve un objeto de promesa recién generado, que opcionalmente se puede usar para encadenar; por ejemplo:
+JSCopy to Clipboard
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("foo");
+  }, 300);
+});
+
+myPromise
+  .then(handleResolvedA, handleRejectedA)
+  .then(handleResolvedB, handleRejectedB)
+  .then(handleResolvedC, handleRejectedC);
+El procesamiento continúa hasta el siguiente eslabón de la cadena incluso cuando .then() carece de una función de devolución de llamada que devuelve un objeto Promise. Por lo tanto, una cadena puede omitir con seguridad cada función de devolución de llamada de rechazo hasta el .catch() final.
+Manejar una promesa rechazada en cada .then() tiene consecuencias más adelante en la cadena de promesas. A veces no hay otra opción, porque un error debe manejarse de inmediato. En tales casos, debemos generar un error de algún tipo para mantener el estado de error en la cadena. Por otro lado, en ausencia de una necesidad inmediata, es más sencillo omitir el manejo de errores hasta una sentencia .catch() final. Un .catch() es realmente solo un .then() sin una ranura de argumento para una función de devolución de llamada para el caso en que se resuelva la promesa.
+
+Más info y ejemplos en : https://www.arsys.es/blog/promesas-javascript 
+8.¿Qué hacen async y await por nosotros?
+Lo que hacen async y await en JavaScript es añadir transparencia en la forma en la que se ejecuta el código de cara al usuario, simulando ser síncrono para facilitarnos la lectura
+Ten presente que la función de la promesa no cambia cuando utilizamos estas palabras clave. Es decir, el código que la hace posible no se modifica y se mantiene asíncrono. Lo que hacen async y await en JavaScript es añadir transparencia en la forma en la que se ejecuta el código de cara al usuario, simulando ser síncrono para facilitarnos la lectura. A continuación, te explicamos exactamente qué hacen las palabras clave async y await en JavaScript.
+async
+La palabra clave async en JavaScript se utiliza en una función para envolver el contenido de la función en una promesa.
+await
+La palabra clave await en JavaScript nos permite definir una sección de la función a la cual el resto del código debe esperar. Es decir, con await definimos que el código restante de la función debe esperar a que esta sección se resuelva. Por ello, a nuestros ojos, el código se ejecutará de forma síncrona en la terminal. Si no utilizamos await en una función asincrónica, seguramente el código se ejecutará en desorden, pues el programa continuaría leyendo mientras espera al resultado de una función no inmediata.
+¿Cómo utilizar async y await en JavaScript?
+Para ejemplificar cómo utilizar async y await en JavaScript, te ponemos un ejemplo. Suponsamos que tenemos la siguiente función doYouLoveMe, que guarda una promesa con el método setTimeout:
+function doYouLoveMe (name) {
+return new Promise (function (resolve, reject) {
+console.log (‘Let me think about it…’)
+setTimeout (() => {
+if (name = ‘Alberto’) {
+resolve (‘Yes!’) {
+} else {
+reject (‘Sorry but no…’)
+}
+}, 1000)
+})
+}
+Ahora, queremos gestionar esta promesa utilizando el método then. Esta define qué sucederá cuando la promesa salga bien y cuando la promesa salga mal:
+function loveChecker () {
+doYouLoveMe (‘Alberto’).then (response => {
+console.log (‘Alberto’, response)
+}, error => {
+console.error (‘Alberto’, error)
+})
+doYouLoveMe (‘Frodo’).then (response => {
+console.log (‘Frodo’, response)
+}, error => {
+console.error (‘Frodo’, error)
+})
+}
+Entonces, async y await en JavaScript nos permiten reformular nuestro código asíncrono para que parezca ser síncrono a nuestros ojos. Teniendo esto en cuenta, la sintaxis de la función loveChecker se transformaría de la siguiente manera utilizando las keywords async y await:
+async function loveChecker () {
+try {
+let response = await doYouLoveMe (‘Alberto’)
+console.log (‘Alberto’, response)
+} catche (error) {
+console.error (‘Alberto’, error)
+}
+try {
+response = await doYouLoveMe (‘Frodo’)
+console.log (‘Frodo’, response)
+} catch (error) {
+console.error (‘Frodo’, error)
+}
+}
+Puedes advertir que lo primero que debemos hacer es insertar la palabra clave async antes de nuestra función asíncrona. Esto hará que la función esté envuelta en una promesa. Luego, hacemos que la respuesta se guarde en una variable. Es allí donde colocamos el await. En este caso, esta palabra clave está haciendo que el código espere a la resolución de la función doYouLoveMe.
+Entonces, antes de ejecutar el console.log de la promesa original, debemos insertar algo como lo siguiente:
+let response = await doYouLoveMe (‘Alberto’)
+Esta línea de código reemplaza el método then de la promesa original.
+A la práctica de lograr que el lenguaje haga cosas por nosotros usando ciertas palabras se le llama sugar syntax. En este caso, estamos haciendo sugar syntax porque utilizamos la palabra async para hacer que el lenguaje envuelva el contenido en una promesa de manera interna. 
+Más info y ejemplos:
+https://www.aluracursos.com/blog/asyncawait-en-javascript-que-es-y-cuando-usar-programacion-asincrona 
