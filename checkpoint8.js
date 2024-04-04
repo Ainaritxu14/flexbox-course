@@ -14,7 +14,7 @@ while ( i< miLista.length) {
 console.log(miLista[i]);
 i++;
 }
-break;
+
 
 //Cree una función de flecha que devuelva "Hola mundo".
 
